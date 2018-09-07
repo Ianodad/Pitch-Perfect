@@ -18,7 +18,7 @@ class TestConfig(Config):
 
 class ProdConfig(Config):
     '''
-    Production congig for child 
+    Production congig for child
     '''
     pass
 
