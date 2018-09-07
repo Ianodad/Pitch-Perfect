@@ -23,6 +23,9 @@ def create_app(config_name):
     # getting bootstrap form app
     bootstrap.init_app(app)
 
+    # Initializing flask extensions
+    db.init_app(app)
+
     # allows to get settings form config
     app.config.from_object(config_options[config_name])
 

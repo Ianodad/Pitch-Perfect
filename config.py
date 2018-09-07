@@ -5,8 +5,9 @@ class Config:
     '''
     General config parent class
     '''
-
     pass
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://renegade:pitch@localhost/pitch'
 
 
 class TestConfig(Config):
@@ -24,7 +25,7 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
 
-        DEBUG = True
+    DEBUG = True
 
 
 config_options = {
