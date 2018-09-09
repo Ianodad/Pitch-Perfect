@@ -24,8 +24,9 @@ def pitch():
     if pitch.validate_on_submit():
         title = pitch.title.data
         pitch = pitch.pitch.data
+        date = pitch.date.data
 
-        new_pitch = Pitch(title=title, pitch=pitch)
+        new_pitch = Pitch(title=title, pitch=pitch, posted=date)
         new_pitch.save_pitch()
         return redirect(url_for('.index'))
 

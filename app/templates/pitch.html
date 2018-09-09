@@ -4,13 +4,14 @@
 {% import 'macros.html' as macro %}
 
 
-
-{% block content %}
-<h1>{{title}}</h1>
-<div>
-    {{ wtf.quick_form(pitch) }}
+<div class="container">
+    {% block content %}
+    <h1>{{title}}</h1>
+    <div class="container">
+        {{ wtf.quick_form(pitch) }}
+    </div>
+    <div class="container mt-5">
+        {{ macro.displayPitches(pitches) }}
+    </div>
+    {% endblock %}
 </div>
-<div>
-    {{ macro.displayPitches(pitches) }}
-</div>
-{% endblock %}

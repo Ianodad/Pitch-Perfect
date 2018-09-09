@@ -3,16 +3,16 @@
     {% for pitch in posts %} 
         <div class="card">
         <div class="card-block">
-            <h4 class="card-title mt-3">{{pitch.title}}</h4>
-            <div class="meta">
+            <h4 class="card-title mt-3 text-center">{{pitch.title|upper}}</h4>
+            <div class="meta text-muted">
                 <a> Catergory </a>
             </div>
-            <div class="card-text">
-                {{ pitch.pitch }}
+            <div class="card-text text-md-left mr-3 pr-3">
+                <p class="mr-2">{{ pitch.pitch }}</p>
             </div>
         </div>
         <div class="card-footer">
-            <small>posted</small>
+            <small>{{pitch.posted}}</small>
             <button class="btn btn-secondary float-right btn-sm">Like</button>
         </div>
         </div>
