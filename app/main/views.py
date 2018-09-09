@@ -31,4 +31,4 @@ def pitch():
 
     pitches = Pitch.get_pitches()
     title = 'Pitch it here!'
-    return render_template('pitch.html', title=title, PitchForm=PitchForm, pitches=pitches)
+    return render_template('pitch.html', title=title, pitch=pitch, pitches=pitches)

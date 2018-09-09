@@ -1,0 +1,23 @@
+{%  macro displayPitches(posts) %} 
+
+    {% for pitch in posts %} 
+        <div class="card">
+        <div class="card-block">
+            <h4 class="card-title mt-3">{{pitch.title}}</h4>
+            <div class="meta">
+                <a> Catergory </a>
+            </div>
+            <div class="card-text">
+                {{ pitch.pitch }}
+            </div>
+        </div>
+        <div class="card-footer">
+            <small>posted</small>
+            <button class="btn btn-secondary float-right btn-sm">Like</button>
+        </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endmacro %}
