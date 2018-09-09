@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, redirect, url_for
 
 # importing main from main blueprint
 from . import main
@@ -6,17 +6,29 @@ from . import main
 from .forms import PitchForm
 # importing database
 from .. import db
-#import models
+# import models
 from ..models import Pitch
 
 
-@main.route('/pitch')
+@main.route('/')
 def index():
     title = 'Home is best'
 
     return render_template('index.html', title=title)
 
 
-@main.route('/pitch/<int:id>', methods=['GET', 'POST'])
+@main.route('/pitch', methods=['GET', 'POST'])
 def pitch():
-    return render_template('pitch.html')
+    pitch = PitchForm()
+
+    if pitch.validate_on_submit():
+        title = pitch.title.data
+        pitch = pitch.pitch.data
+
+        new_pitch = Pitch(title=title, pitch=pitch)
+        new_pitch.save_pitch()
+        return redirect(url_for('.index'))
+
+    pitches = Pitch.get_pitches()
+    title = 'Pitch it here!'
+    return render_template('pitch.html', title=title, PitchForm=PitchForm, pitches=pitches)

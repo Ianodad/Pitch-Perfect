@@ -8,5 +8,6 @@ class PitchForm(FlaskForm):
     '''
     Form for posting pitchs
     '''
-    post = StringField('Your Post here', validators=[Required()])
+    title = StringField('Your title here', validators=[Required()])
+    Pitch = StringField('Your Post here', validators=[Required()])
     submit = SubmitField('Submit')

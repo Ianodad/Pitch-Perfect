@@ -45,8 +45,30 @@ class Pitch(db.Model):
     # end of true feilds
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     catergory_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
-
     comments = db.relationship('Comment', backref='pitch', lazy="dynamic")
+
+    def save_pitch(self):
+        '''
+        save pitch models to db
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_pitch(cls, id):
+        '''
+        querys database for a pitch by id the returns id
+        '''
+        pitch = Pitch.query.filter_by(id).all()
+        return pitch
+
+    @classmethod
+    def get_pitches(cls):
+        '''
+        get all pitches from database
+        '''
+        pitches = Pitch.query.order_by('-id').all()
+        return pitches
 
 
 class Comment(db.Model):
