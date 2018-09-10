@@ -1,23 +1,26 @@
-{%  macro displayPitches(posts) %} 
+{% macro displayPitches(posts) %}
 
-    {% for pitch in posts %} 
-        <div class="card">
-        <div class="card-block">
-            <h4 class="card-title mt-3 text-center">{{pitch.title|upper}}</h4>
-            <div class="meta text-muted">
-                <a> Catergory </a>
-            </div>
-            <div class="card-text text-md-left mr-3 pr-3">
-                <p class="mr-2">{{ pitch.pitch }}</p>
-            </div>
+{% for pitch in posts %}
+<div class="card">
+    <div class="card-block">
+        <h4 class="card-title mt-3 text-center">{{pitch.title|upper}}</h4>
+        <div class="meta text-muted">
+            <a> Catergory </a>
         </div>
-        <div class="card-footer">
-            <small>{{pitch.posted}}</small>
-            <button class="btn btn-secondary float-right btn-sm">Like</button>
+        <div class="card-text text-md-left mr-3 pr-3">
+            <p class="mr-2">{{ pitch.pitch }}</p>
         </div>
-        </div>
+    </div>
+    <div class="card-footer">
+        <small>{{pitch.posted}}</small>
+        <a href="/pitch/{{pitch.id}}">
+            <small>Commnet</small></a>
+        <button class="btn btn-secondary float-right btn-sm">Like</button>
+    </div>
 
-    {% endfor %}
+</div>
+
+{% endfor %}
 
 
 {% endmacro %}

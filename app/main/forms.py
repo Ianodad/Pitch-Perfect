@@ -14,12 +14,11 @@ class PitchForm(FlaskForm):
     date = DateField('Post Date', format='%Y-%m-%d')
     submit = SubmitField('Submit')
 
-class Comments(FlaskForm):
+
+class CommentsForm(FlaskForm):
 
     '''
-    comments of the pitchs 
+    comments of the pitchs
     '''
     comments = StringField('comment here')
-
-
-
+    submit = SubmitField('Comment')

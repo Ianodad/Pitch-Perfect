@@ -13,9 +13,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('main.pitch')}}">Create pitch</a>
             </li>
-            <li class="nav-item">
+            {% if current_user.is_authenticated %}
+            <li class="float-left">{{current_user.username}}</li>
+            <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+            {% else %}
+            <li class="nav-item float-left">
                 <a class="nav-link" href="{{url_for('auth.register')}}">Register User</a>
             </li>
+            <li class="float-left"><a href="{{url_for('auth.login')}}">Sign in</a></li>
+            {%endif%}
         </ul>
     </div>
 </nav>

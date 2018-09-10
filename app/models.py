@@ -84,7 +84,7 @@ class Pitch(db.Model):
         '''
         querys database for a pitch by id the returns id
         '''
-        pitch = Pitch.query.filter_by(id).all()
+        pitch = Pitch.query.filter_by(pitch_id=id).all()
         return pitch
 
     @classmethod
@@ -108,3 +108,12 @@ class Comment(db.Model):
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     pitch_id = db.Column(db.Integer, db.ForeignKey("pitchs.id"))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comment(cls, id):
+        comments = Comment.query.filter_by(pitch_id=id).all()
+        return comments
