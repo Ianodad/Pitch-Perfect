@@ -15,28 +15,14 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), index=True)
-    password_hash = db.Column(db.String(255))
+    pass_secure = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique=True, index=True)
 
     posts = db.relationship('Pitch', backref='user', lazy="dynamic")
     comments = db.relationship('Comment', backref='user', lazy="dynamic")
 
     def __repr__(self):
         return f'User {self.username}'
-
-
-class Catergory(db.Model):
-    '''
-    Catergories model for Pitch
-    '''
-    __tablename__ = 'categories'
-
-    id = db.Column(db.Integer, primary_key=True)
-    cat_id = db.Column(db.Integer)
-    cat_name = db.Column(db.String(255))
-    pass_secure = db.Column(db.String(255))
-
-    # from foreign key
-    post_id = db.relationship('Pitch', backref='catergory', lazy="dynamic")
 
     @property
     def password(self):
@@ -55,6 +41,19 @@ class Catergory(db.Model):
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+
+class Catergory(db.Model):
+    '''
+    Catergories model for Pitch
+    '''
+    __tablename__ = 'categories'
+
+    id = db.Column(db.Integer, primary_key=True)
+    cat_id = db.Column(db.Integer)
+    cat_name = db.Column(db.String(255))
+    # from foreign key
+    post_id = db.relationship('Pitch', backref='catergory', lazy="dynamic")
 
 
 class Pitch(db.Model):
