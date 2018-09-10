@@ -9,6 +9,10 @@ from .. import db
 # import models
 from ..models import Pitch
 
+# decorator that will user authentication
+from flask_login import login_required
+
+
 
 @main.route('/')
 def index():

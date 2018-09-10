@@ -13,3 +13,13 @@ class PitchForm(FlaskForm):
     pitch = StringField('Your Post here', validators=[Required()])
     date = DateField('Post Date', format='%Y-%m-%d')
     submit = SubmitField('Submit')
+
+class Comments(FlaskForm):
+
+    '''
+    comments of the pitchs 
+    '''
+    comments = StringField('comment here')
+
+
+
