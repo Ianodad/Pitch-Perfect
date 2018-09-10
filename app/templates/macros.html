@@ -13,7 +13,7 @@
     </div>
     <div class="card-footer">
         <small>{{pitch.posted}}</small>
-        <a href="/pitch/{{pitch.id}}">
+        <a href="/commented/{{pitch.id}}">
             <small>Commnet</small></a>
         <button class="btn btn-secondary float-right btn-sm">Like</button>
     </div>
@@ -22,5 +22,21 @@
 
 {% endfor %}
 
+{% endmacro %}
 
+
+{% macro displayComments(comments) %}
+{% for comment in comments %}
+<div class="card p-3">
+    <blockquote class="blockquote mb-0 card-body">
+        <p>{{comment.comment}}</p>
+        <footer class="blockquote-footer">
+            <small class="text-muted">
+                by <cite title="Source Title">{{current_user}}</cite>
+            </small>
+        </footer>
+    </blockquote>
+</div>
+
+{% endfor %}
 {% endmacro %}

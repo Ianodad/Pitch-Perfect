@@ -84,7 +84,7 @@ class Pitch(db.Model):
         '''
         querys database for a pitch by id the returns id
         '''
-        pitch = Pitch.query.filter_by(pitch_id=id).all()
+        pitch = Pitch.query.filter_by(id=id).first()
         return pitch
 
     @classmethod

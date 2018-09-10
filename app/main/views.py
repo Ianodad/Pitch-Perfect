@@ -30,9 +30,9 @@ def pitch():
     if pitch.validate_on_submit():
         title = pitch.title.data
         pitch = pitch.pitch.data
-        date = pitch.date.data
+        # date = pitch.date.data
 
-        new_pitch = Pitch(title=title, pitch=pitch, posted=date)
+        new_pitch = Pitch(title=title, pitch=pitch, )
         new_pitch.save_pitch()
 
         return redirect(url_for('.pitch'))
@@ -52,10 +52,11 @@ def pitch():
     return render_template('pitch.html', title=title, pitch=pitch, pitches=pitches, comment=comment)
 
 
-@main.route('/pitch/<int:id>')
-def pitched(id):
+@main.route('/commented/<int:id>', methods=['GET', 'POST'])
+def commented(id):
 
     this_pitch = Pitch.get_pitch(id)
+    print(this_pitch.title)
     comments = CommentsForm()
 
     if comments.validate_on_submit():
@@ -69,4 +70,4 @@ def pitched(id):
     pitch_comments = Comment.get_comment(id)
 
     title = 'Pitch Perfect'
-    return render_template('pitched.html', pitch=this_pitch, comments=comments, pitch_comments=pitch_comments)
+    return render_template('commented.html', pitch=this_pitch, comments=comments, pitch_comments=pitch_comments)

@@ -1,6 +1,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
-
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
 
 {% block content %}
 
@@ -21,6 +22,7 @@
             {{ wtf.quick_form(comments) }}
         </div>
     </div>
+    {{macro.displayComments(pitch_comments)}}
 </div>
 
 {% endblock %}
