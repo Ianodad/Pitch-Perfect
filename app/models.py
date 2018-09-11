@@ -84,7 +84,7 @@ class Pitch(db.Model):
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     # end of true feilds
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    catergory_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
     comments = db.relationship('Comment', backref='pitch', lazy="dynamic")
 
     def save_pitch(self):
@@ -109,6 +109,14 @@ class Pitch(db.Model):
         '''
         pitches = Pitch.query.order_by('-id').all()
         return pitches
+
+    @classmethod
+    def get_pitched(cls, id):
+        '''
+        get pitch base on category id
+        '''
+        pitched = Pitch.query.filter_by(category_id=id).all()
+        return pitched
 
 
 class Comment(db.Model):

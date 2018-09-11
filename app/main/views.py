@@ -38,19 +38,34 @@ def pitch():
 
         return redirect(url_for('.pitch'))
 
-    # if comment.validate_on_submit():
-    #     commented = comment.comments.data
-
-    #     new_comment = Comment(comment=commented)
-    #     new_comment.save_comment()
-
-    #     return redirect(url_for('.pitch'))
-
     pitches = Pitch.get_pitches()
     print(pitches)
     title = 'Pitch it here!'
     # comments = get_comment(id)
     return render_template('pitch.html', title=title, pitch=pitch, pitches=pitches, comment=comment)
+
+
+@main.route('/category/<int:id>', methods=['GET', 'POST'])
+def categoryPitch(id):
+
+    pitch = PitchForm()
+
+    if pitch.validate_on_submit():
+        title = pitch.title.data
+        pitch = pitch.pitch.data
+        # date = pitch.date.data
+
+        new_pitch = Pitch(title=title, pitch=pitch,
+                          user_id=current_user.id, category_id=id)
+        new_pitch.save_pitch()
+
+        return redirect(url_for('.pitch'))
+
+    pitches = Pitch.get_pitched(id)
+    print(pitches)
+    title = 'Pitch it here!'
+    # comments = get_comment(id)
+    return render_template('pitchCat.html', title=title, pitch=pitch, pitches=pitches)
 
 
 @main.route('/commented/<int:id>', methods=['GET', 'POST'])
