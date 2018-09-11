@@ -7,7 +7,7 @@ from .forms import PitchForm, CommentsForm
 # importing database
 from .. import db
 # import models
-from ..models import Pitch, Comment, User
+from ..models import Pitch, Comment, User, Catergory
 
 # decorator that will user authentication
 from flask_login import login_required, current_user
@@ -18,8 +18,9 @@ from flask_wtf import FlaskForm
 @main.route('/')
 def index():
     title = 'Home is best'
+    pitchd = Pitch.get_pitches()
 
-    return render_template('index.html', title=title)
+    return render_template('index.html', title=title, pitchd=pitchd)
 
 
 @main.route('/pitch', methods=['GET', 'POST'])
@@ -32,7 +33,7 @@ def pitch():
         pitch = pitch.pitch.data
         # date = pitch.date.data
 
-        new_pitch = Pitch(title=title, pitch=pitch, )
+        new_pitch = Pitch(title=title, pitch=pitch, user_id=current_user.id)
         new_pitch.save_pitch()
 
         return redirect(url_for('.pitch'))

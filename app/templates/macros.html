@@ -12,10 +12,12 @@
         </div>
     </div>
     <div class="card-footer">
+        <p>Pitched by {{pitch.user.username|capitalize }}</p>
         <small>{{pitch.posted}}</small>
         <a href="/commented/{{pitch.id}}">
             <small>Commnet</small></a>
         <button class="btn btn-secondary float-right btn-sm">Like</button>
+        <button class="btn btn-secondary float-right btn-sm">Dislike</button>
     </div>
 
 </div>
@@ -38,5 +40,18 @@
     </blockquote>
 </div>
 
+{% endfor %}
+{% endmacro %}
+
+{% macro displayPitch(pitched) %}
+{% for pitch in pitched %}
+<a href="/commented/{{pitch.id}}">
+    <div class="card m-2"
+         style="width: 25rem; height:relative;">
+        <div class="card-body m-auto">
+            <h4 class="card-title display-2">{{pitch.title}}</h4>
+        </div>
+    </div>
+</a>
 {% endfor %}
 {% endmacro %}

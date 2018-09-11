@@ -18,7 +18,7 @@ class User(UserMixin, db.Model):
     pass_secure = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True, index=True)
 
-    posts = db.relationship('Pitch', backref='user', lazy="dynamic")
+    pitch = db.relationship('Pitch', backref='user', lazy="dynamic")
     comments = db.relationship('Comment', backref='user', lazy="dynamic")
 
     def __repr__(self):
@@ -53,7 +53,7 @@ class Catergory(db.Model):
     cat_id = db.Column(db.Integer)
     cat_name = db.Column(db.String(255))
     # from foreign key
-    post_id = db.relationship('Pitch', backref='catergory', lazy="dynamic")
+    pitch_id = db.relationship('Pitch', backref='catergory', lazy="dynamic")
 
 
 class Pitch(db.Model):
@@ -115,5 +115,8 @@ class Comment(db.Model):
 
     @classmethod
     def get_comment(cls, id):
+        '''
+        filter comment by pitch id
+        '''
         comments = Comment.query.filter_by(pitch_id=id).all()
         return comments
