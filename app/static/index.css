@@ -1,3 +1,14 @@
 .sign-up {
-    background-image: url('..static/images/skies.jpg')
+    background-image: url('images/art.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px;
+    padding: 0px;
+    margin: 0px;
+    border: 0 none;
+}
+
+.navbar {
+    background-color: #E24E42;
+
 }

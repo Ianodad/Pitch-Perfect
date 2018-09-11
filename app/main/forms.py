@@ -22,3 +22,11 @@ class CommentsForm(FlaskForm):
     '''
     comments = StringField('comment here')
     submit = SubmitField('Comment')
+
+
+class CategoryForm(FlaskForm):
+    '''
+    category forms that we provide
+    '''
+    category = StringField('Your category here')
+    submit = SubmitField('Create Category')

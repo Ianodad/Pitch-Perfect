@@ -3,4 +3,10 @@
 <!-- Navbar block  -->
 {% block navbar %}
 {% include 'navbar.html' %}
-{% endblock %} 
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet"
+      href="{{url_for('static',filename='navbar.css')}}">
+
+{% endblock %}
+{% endblock %}

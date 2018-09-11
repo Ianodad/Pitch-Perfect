@@ -3,11 +3,11 @@ from flask import render_template, redirect, url_for
 # importing main from main blueprint
 from . import main
 # importing Forms
-from .forms import PitchForm, CommentsForm
+from .forms import PitchForm, CommentsForm, CategoryForm
 # importing database
 from .. import db
 # import models
-from ..models import Pitch, Comment, User, Catergory
+from ..models import Pitch, Comment, User, Category
 
 # decorator that will user authentication
 from flask_login import login_required, current_user
@@ -19,7 +19,7 @@ from flask_wtf import FlaskForm
 def index():
     title = 'Home is best'
     pitchd = Pitch.get_pitches()
-
+    # username = P
     return render_template('index.html', title=title, pitchd=pitchd)
 
 
@@ -72,3 +72,20 @@ def commented(id):
 
     title = 'Pitch Perfect'
     return render_template('commented.html', pitch=this_pitch, comments=comments, pitch_comments=pitch_comments)
+
+
+@main.route('/category', methods=['GET', 'POST'])
+def category():
+    categoryForm = CategoryForm()
+
+    if categoryForm.validate_on_submit():
+        category = categoryForm.category.data
+        new_category = Category(category=category)
+
+        new_category.save_category()
+
+        return redirect(url_for('.index'))
+
+    categories = Category.get_categories()
+
+    return render_template('category.html', categories=categories, category=categoryForm)

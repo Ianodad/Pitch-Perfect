@@ -1,7 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mx-auto mx-5">
+
+<nav class="navbar navbar-default mx-auto mx-5">
     <div class="bar ml-auto mr-5 d-flex flex-row">
         <a class="navbar-brand"
-           href="{{url_for('.index')}}">PITCH PERFECT</a>
+           href="{{url_for('main.index')}}">PITCH PERFECT</a>
         <button class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -17,11 +18,15 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link"
-                       href="{{url_for('.index')}}">Home <span class="sr-only">(current)</span></a>
+                       href="{{url_for('main.index')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
                        href="{{url_for('main.pitch')}}">Create pitch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{{url_for('main.category')}}">Category</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

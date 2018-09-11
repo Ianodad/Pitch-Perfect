@@ -43,17 +43,32 @@ class User(UserMixin, db.Model):
         return User.query.get(int(user_id))
 
 
-class Catergory(db.Model):
+class Category(db.Model):
     '''
-    Catergories model for Pitch
+    Categories model for Pitch
     '''
     __tablename__ = 'categories'
 
     id = db.Column(db.Integer, primary_key=True)
     cat_id = db.Column(db.Integer)
-    cat_name = db.Column(db.String(255))
+    category = db.Column(db.String(255))
     # from foreign key
-    pitch_id = db.relationship('Pitch', backref='catergory', lazy="dynamic")
+    pitch_id = db.relationship('Pitch', backref='category', lazy="dynamic")
+
+    def save_category(self):
+        '''
+        save category models to db
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_categories(cls):
+        '''
+        querys database for a categories by id the returns id
+        '''
+        category = Category.query.order_by('-id').all()
+        return category
 
 
 class Pitch(db.Model):

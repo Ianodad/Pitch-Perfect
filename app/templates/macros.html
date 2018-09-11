@@ -1,18 +1,19 @@
-{% macro displayPitches(posts) %}
+<!---Pitch display macro to pitch html-->
 
+{% macro displayPitches(posts) %}
 {% for pitch in posts %}
-<div class="card">
+<div class="card mt-3">
     <div class="card-block">
         <h4 class="card-title mt-3 text-center">{{pitch.title|upper}}</h4>
         <div class="meta text-muted">
-            <a> Catergory </a>
+            <a class="p-auto"> Catergory </a>
         </div>
         <div class="card-text text-md-left mr-3 pr-3">
             <p class="mr-2">{{ pitch.pitch }}</p>
         </div>
     </div>
     <div class="card-footer">
-        <p>Pitched by {{pitch.user.username|capitalize }}</p>
+        <p>Pitched by {{pitch.user_id.username|capitalize }}</p>
         <small>{{pitch.posted}}</small>
         <a href="/commented/{{pitch.id}}">
             <small>Commnet</small></a>
@@ -25,7 +26,10 @@
 {% endfor %}
 
 {% endmacro %}
+<!---End Pitch display macro-->
 
+
+<!---Comment display macro commented-->
 
 {% macro displayComments(comments) %}
 {% for comment in comments %}
@@ -42,7 +46,9 @@
 
 {% endfor %}
 {% endmacro %}
+<!---End Comment display macro commented-->
 
+<!--Marco display for pitch title in index-->
 {% macro displayPitch(pitched) %}
 {% for pitch in pitched %}
 <a href="/commented/{{pitch.id}}">
@@ -55,3 +61,21 @@
 </a>
 {% endfor %}
 {% endmacro %}
+<!--End Marco display for pitch title in index-->
+
+<!--Macro for catergories-->
+{% macro displayCategory(categories) %}
+
+{% for cat in categories %}
+
+<div class="card card-outline-success mb-3 text-center">
+    <div class="card-block">
+        <h4 class="card-title">{{cat.category}}</h4>
+    </div>
+</div>
+
+{% endfor %}
+{% endmacro %}
+
+
+<!--End Macro for catergories-->
