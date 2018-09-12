@@ -12,6 +12,11 @@ from config import config_options
 # importing used for login
 from flask_login import LoginManager
 
+from flask_mail import Mail
+
+mail = Mail()
+
+
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
@@ -46,6 +51,9 @@ def create_app(config_name):
 
     # blueprint of the authnication
     from .auth import auth as auth_blueprint
+
+    mail.init_app(app)
+
     app.register_blueprint(auth_blueprint, url_prefix='/authenticate')
 
     return app

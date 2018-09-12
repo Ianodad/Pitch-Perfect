@@ -25,6 +25,7 @@ def index():
 
 
 @main.route('/pitch', methods=['GET', 'POST'])
+@login_required
 def pitch():
     pitch = PitchForm()
     comment = CommentsForm()
@@ -47,6 +48,7 @@ def pitch():
 
 
 @main.route('/category/<int:id>', methods=['GET', 'POST'])
+@login_required
 def categoryPitch(id):
 
     pitch = PitchForm()
@@ -72,6 +74,7 @@ def categoryPitch(id):
 
 
 @main.route('/commented/<int:id>', methods=['GET', 'POST'])
+@login_required
 def commented(id):
 
     this_pitch = Pitch.get_pitch(id)
@@ -93,6 +96,7 @@ def commented(id):
 
 
 @main.route('/category', methods=['GET', 'POST'])
+@login_required
 def category():
     categoryForm = CategoryForm()
 
@@ -110,6 +114,7 @@ def category():
 
 
 @main.route('/user/<uname>')
+@login_required
 def profile(uname):
     user = User.query.filter_by(username=uname).first()
 
