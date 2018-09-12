@@ -27,6 +27,9 @@
             </li>
             {% if current_user.is_authenticated %}
             <li>{{current_user.username}}</li>
+            <li>
+                <a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a>
+            </li>
             <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
             {% else %}
             <li class="nav-item">

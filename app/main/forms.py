@@ -10,7 +10,7 @@ class PitchForm(FlaskForm):
     Form for posting pitchs
     '''
     title = StringField('Your title here', validators=[Required()])
-    pitch = StringField('Your Post here', validators=[Required()])
+    pitch = TextAreaField('Your Post here', validators=[Required()])
     date = DateField('Post Date', format='%Y-%m-%d')
     submit = SubmitField('Submit')
 
@@ -20,7 +20,7 @@ class CommentsForm(FlaskForm):
     '''
     comments of the pitchs
     '''
-    comments = StringField('comment here')
+    comments = TextAreaField('comment here')
     submit = SubmitField('Comment')
 
 
@@ -30,3 +30,8 @@ class CategoryForm(FlaskForm):
     '''
     category = StringField('Your category here')
     submit = SubmitField('Create Category')
+
+
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.', validators=[Required()])
+    submit = SubmitField('Submit')
