@@ -20,7 +20,8 @@ def index():
     title = 'Home is best'
     pitchd = Pitch.get_pitches()
     # username = P
-    return render_template('index.html', title=title, pitchd=pitchd)
+    category = Category.get_categories()
+    return render_template('index.html', title=title, pitchd=pitchd, category=category)
 
 
 @main.route('/pitch', methods=['GET', 'POST'])

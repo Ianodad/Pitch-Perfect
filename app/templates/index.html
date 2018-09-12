@@ -28,26 +28,7 @@
         </div>
     </div>
     <div class=" col -md-6 d-flex flex-row text-white align-items-stretch text-center justify-content-center">
-        <div class="port-item p-4 bg-primary mx-2"
-             data-toggle="collapse"
-             data-target=#home>
-            <i class="fa fa-home d-block"></i> LAUGH
-        </div>
-        <div class="port-item p-4 bg-success mx-2"
-             data-toggle="collapse"
-             data-target="#resume">
-            <i class="fa fa-graduation-cap d-block"></i> BUSININESS
-        </div>
-        <div class="port-item p-4 bg-warning mx-2"
-             data-toggle="collapse"
-             data-target="#work">
-            <i class="fa fa-folder-open d-block"></i> STANDUP
-        </div>
-        <div class="port-item p-4 bg-danger mx-2"
-             dat-toggle="collapse"
-             data-target="#contact">
-            <i class="fa fa-envelope d-block"></i> MONEY
-        </div>
+        {{ macro.displayCat(category) }}
     </div>
     <div class="pitch">
         <div class="row">

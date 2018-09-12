@@ -79,6 +79,19 @@
 
 {% endfor %}
 {% endmacro %}
-
-
 <!--End Macro for catergories-->
+
+
+{% macro displayCat(cats) %}
+
+{% for cat in cats %}
+<div class="port-item p-4 bg-danger mx-2"
+     dat-toggle="collapse"
+     data-target="#contact">
+    <a href="/category/{{cat.id}}">
+        <i class="fa fa-envelope d-block"></i> {{ cat.category }}
+    </a>
+</div>
+
+{% endfor %}
+{% endmacro %}
