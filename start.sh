@@ -1,3 +1,3 @@
 export SECRET_KEY='Flask WTF Secret Key'
 
-python3.6 manage.py server
+python3.6 manager.py server

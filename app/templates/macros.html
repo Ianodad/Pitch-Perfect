@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="card-footer">
-        <p>Pitched by {{pitch.user_id.username|capitalize }}</p>
+        <p>Pitched by {{pitch.user.username|capitalize }}</p>
         <small>{{pitch.posted}}</small>
         <a href="/commented/{{pitch.id}}">
             <small>Commnet</small></a>
@@ -38,7 +38,7 @@
         <p>{{comment.comment}}</p>
         <footer class="blockquote-footer">
             <small class="text-muted">
-                by <cite title="Source Title">{{current_user}}</cite>
+                by <cite title="Source Title">{{comment.user.username}}</cite>
             </small>
         </footer>
     </blockquote>

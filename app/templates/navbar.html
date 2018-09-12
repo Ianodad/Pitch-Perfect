@@ -1,46 +1,43 @@
-
 <nav class="navbar navbar-default mx-auto mx-5">
-    <div class="bar ml-auto mr-5 d-flex flex-row">
-        <a class="navbar-brand"
-           href="{{url_for('main.index')}}">PITCH PERFECT</a>
-        <button class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <a class="navbar-brand"
+       href="{{url_for('main.index')}}">PITCH PERFECT</a>
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse"
-             id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link"
-                       href="{{url_for('main.index')}}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{url_for('main.pitch')}}">Create pitch</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{url_for('main.category')}}">Category</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                {% if current_user.is_authenticated %}
-                <li>{{current_user.username}}</li>
-                <li class="ml-2"><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link ml-2"
-                       href="{{url_for('auth.register')}}">Register User</a>
-                </li>
-                <li class="ml-2"><a href="{{url_for('auth.login')}}">Sign in</a></li>
-                {%endif%}
-            </ul>
-        </div>
+    <div class="collapse navbar-collapse"
+         id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link"
+                   href="{{url_for('main.index')}}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{{url_for('main.pitch')}}">Create pitch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{{url_for('main.category')}}">Category</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            {% if current_user.is_authenticated %}
+            <li>{{current_user.username}}</li>
+            <li class="ml-2"><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link ml-2"
+                   href="{{url_for('auth.register')}}">Register User</a>
+            </li>
+            <li class="ml-2"><a href="{{url_for('auth.login')}}">Sign in</a></li>
+            {%endif%}
+        </ul>
     </div>
 </nav>
