@@ -64,8 +64,10 @@ def categoryPitch(id):
 
     pitches = Pitch.get_pitched(id)
     print(pitches)
-    title = 'Pitch it here!'
-    # comments = get_comment(id)
+
+    category = Category.get_category(id)
+
+    title = f'{category.category} pitch'    # comments = get_comment(id)
     return render_template('pitchCat.html', title=title, pitch=pitch, pitches=pitches)
 
 
@@ -86,7 +88,7 @@ def commented(id):
 
     pitch_comments = Comment.get_comment(id)
 
-    title = 'Pitch Perfect'
+    title = f'{this_pitch.title} comment'
     return render_template('commented.html', pitch=this_pitch, comments=comments, pitch_comments=pitch_comments)
 
 

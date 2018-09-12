@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default mx-auto mx-5">
+<nav class="navbar navbar-expand-lg  mx-auto mx-5 d-flex flex-row">
     <a class="navbar-brand"
        href="{{url_for('main.index')}}">PITCH PERFECT</a>
     <button class="navbar-toggler"
@@ -10,8 +10,7 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse"
+    <div class="collapse navbar-collapse float-right"
          id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -26,18 +25,19 @@
                 <a class="nav-link"
                    href="{{url_for('main.category')}}">Category</a>
             </li>
-        </ul>
-        <ul class="navbar-nav">
             {% if current_user.is_authenticated %}
             <li>{{current_user.username}}</li>
-            <li class="ml-2"><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+            <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link ml-2"
+                <a class="nav-link"
                    href="{{url_for('auth.register')}}">Register User</a>
             </li>
             <li class="ml-2"><a href="{{url_for('auth.login')}}">Sign in</a></li>
             {%endif%}
         </ul>
+        <!--<ul class="navbar-nav">
+
+        </ul>-->
     </div>
 </nav>

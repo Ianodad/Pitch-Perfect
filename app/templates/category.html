@@ -1,11 +1,12 @@
+{% extends 'base.html' %}
+
 {% import 'macros.html' as macro %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% extends 'base.html' %}
 
 
 
 {% block content %}
-
+<h1>ADD CATEGORY</h1>
 <div class="container">
     {{ wtf.quick_form(category) }}
     <div>

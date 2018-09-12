@@ -6,7 +6,7 @@
     <div class="card-block">
         <h4 class="card-title mt-3 text-center">{{pitch.title|upper}}</h4>
         <div class="meta text-muted">
-            <a class="p-auto"> Catergory </a>
+            <a class="p-auto"> Catergory <p>{{pitch.category.category}}</p></a>
         </div>
         <div class="card-text text-md-left mr-3 pr-3">
             <p class="mr-2">{{ pitch.pitch }}</p>
@@ -55,7 +55,7 @@
     <div class="card m-2"
          style="width: 25rem; height:relative;">
         <div class="card-body m-auto">
-            <h4 class="card-title display-2">{{pitch.title}}</h4>
+            <h4 class="card-title display-4">{{pitch.title|upper}}</h4>
         </div>
     </div>
 </a>
@@ -63,7 +63,7 @@
 {% endmacro %}
 <!--End Marco display for pitch title in index-->
 
-<!--Macro for catergories-->
+<!--Macro for catergories in the index-->
 {% macro displayCategory(categories) %}
 
 {% for cat in categories %}
@@ -71,7 +71,7 @@
 <div class="card card-outline-success mb-3 text-center">
     <div class="card-block">
         <a href="/category/{{cat.id}}">
-            <h4 class="card-title">{{cat.category}}</h4>
+            <h4 class="card-title display-4 text-center">{{cat.category|upper}}</h4>
         </a>
 
     </div>
@@ -85,12 +85,13 @@
 {% macro displayCat(cats) %}
 
 {% for cat in cats %}
-<div class="port-item p-4 bg-danger mx-2"
-     dat-toggle="collapse"
-     data-target="#contact">
-    <a href="/category/{{cat.id}}">
-        <i class="fa fa-envelope d-block"></i> {{ cat.category }}
-    </a>
+<div class="card p-4 mx-2"
+     style="width: 15rem; height:relative;">
+    <div class="card-block">
+        <a href="/category/{{cat.id}}">
+            <h4> {{ cat.category|upper }}</h4>
+        </a>
+    </div>
 </div>
 
 {% endfor %}

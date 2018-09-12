@@ -65,9 +65,17 @@ class Category(db.Model):
     @classmethod
     def get_categories(cls):
         '''
-        querys database for a categories by id the returns id
+        querys database for a categories by id the returns all id
         '''
-        category = Category.query.order_by('-id').all()
+        categories = Category.query.order_by('-id').all()
+        return categories
+
+    @classmethod
+    def get_category(cls, id):
+        '''
+        querys database for a category
+        '''
+        category = Category.query.filter_by(id=id).first()
         return category
 
 

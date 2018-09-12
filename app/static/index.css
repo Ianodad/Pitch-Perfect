@@ -9,6 +9,10 @@
 }
 
 .navbar {
-    background-color: #E24E42;
+    background-color: #008F95;
 
+}
+
+.navbar a {
+    color: aliceblue
 }
