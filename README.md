@@ -1,4 +1,4 @@
-# [PitchIt](https:///)
+# [PitchIt](https://pitchperfectly.herokuapp.com/)
 ## This app allow the a user to login a view pitch of various add a catergory and a pitch in an a exsisting catergory. 
 ### SEP 07th, 2018
 #### By **[Ian Odhiambo](https://github.com/ianodad)**
