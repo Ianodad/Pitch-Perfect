@@ -6,7 +6,8 @@ from flask_migrate import Migrate, MigrateCommand
 # user imports models
 from app.models import User, Category, Pitch, Comment
 # Creating app instance
-app = create_app('development')
+# app = create_app('development')
+app = create_app('production')
 
 
 manager = Manager(app)
