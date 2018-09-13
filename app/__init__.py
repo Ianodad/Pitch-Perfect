@@ -52,6 +52,7 @@ def create_app(config_name):
     # blueprint of the authnication
     from .auth import auth as auth_blueprint
 
+    # intiating email
     mail.init_app(app)
 
     app.register_blueprint(auth_blueprint, url_prefix='/authenticate')

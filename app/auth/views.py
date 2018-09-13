@@ -9,6 +9,7 @@ from flask_login import login_user, logout_user, login_required
 from . import auth
 # form for registrating form
 from .forms import LoginForm, RegistrationForm
+# used for email sending
 from ..email import mail_message
 
 
@@ -19,9 +20,15 @@ def register():
     '''
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, password=form.password.data, email=form.email.data)
+        user = User(username=form.username.data,
+                    password=form.password.data, email=form.email.data)
+
+        mail_message("Welcome to watchlist",
+                     "email/welcome_user", user.email, user=user)
+                     
         db.session.add(user)
         db.session.commit()
+
         return redirect(url_for('auth.login'))
     title = "New Account Details"
     return render_template('auth/register.html',
@@ -44,7 +51,7 @@ def login():
 
         flash('Invalid username or Password')
 
-    title = "Pitch :ogin"
+    title = "Pitch Login"
     return render_template('auth/login.html',
                            login_form=login_form,
                            title=title)
