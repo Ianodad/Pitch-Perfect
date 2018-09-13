@@ -1,31 +1,41 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <!-- displaying  Username-->
-        <div class="col-md-4">
-            <h3> {{user.username| capitalize}} </h3>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <!-- displaying  Username-->
+            <div class="card m-auto col-md-4">
+                <h3> {{user.username| capitalize}} </h3>
 
-            <!--Displaying user bio-->
-            {% if user.bio %}
-            <p> {{user.bio}}</p>
-            {%else%}
-            <p> {{user.username| capitalize}} has no bio </p>
-            {% endif %}
+                <!--Displaying user bio-->
+                {% if user.bio %}
+                <p> {{user.bio}}</p>
+                {%else%}
+                <p> {{user.username| capitalize}} has no bio </p>
+                {% endif %}
+            </div>
+
+            <!--Display profile photo-->
+            <div class=" card  m-auto col-md-4">
+
+                {% if user.profile_pic_path %}
+                <img src="{{url_for('static',filename=user.profile_pic_path)}}"
+                     alt=""
+                     class="img-thumbnail">
+                {%else%}
+                <p>No profile picture</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container  mt-5">
+        <h2 class="text-capitalize text-center"><u>Pitches by {{title}}</u></h2>
+        <div class="userpitch">
+            {{ macro.displayPitches(pitches) }}
         </div>
 
-        <!--Display profile photo-->
-        <div class="col-md-4">
-
-            {% if user.profile_pic_path %}
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}"
-                 alt=""
-                 class="img-thumbnail">
-            {%else%}
-            <p>No profile picture</p>
-            {% endif %}
-        </div>
     </div>
 </div>
 {% endblock %}

@@ -42,7 +42,7 @@ def pitch():
 
     pitches = Pitch.get_pitches()
     print(pitches)
-    title = 'Pitch it here!'
+    title = 'ALL PITCHES'
     # comments = get_comment(id)
     return render_template('pitch.html', title=title, pitch=pitch, pitches=pitches, comment=comment)
 
@@ -87,7 +87,7 @@ def commented(id):
                               user_id=current_user.id)
         new_comment.save_comment()
 
-        return redirect(url_for('.pitch'))
+        # return redirect(url_for('main.commnted'))
 
     pitch_comments = Comment.get_comment(id)
 
@@ -106,7 +106,7 @@ def category():
 
         new_category.save_category()
 
-        return redirect(url_for('.index'))
+        # return redirect(url_for('.index'))
 
     categories = Category.get_categories()
 
@@ -120,8 +120,9 @@ def profile(uname):
 
     if user is None:
         abort(404)
-
-    return render_template("profile/profile.html", user=user)
+    pitches = Pitch.get_userpitch(current_user.id)
+    title = f'{current_user.username}'
+    return render_template("profile/profile.html", user=user, pitches=pitches, title=title)
 
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])

@@ -6,7 +6,8 @@
     <div class="card-block">
         <h4 class="card-title mt-3 text-center">{{pitch.title|upper}}</h4>
         <div class="meta text-muted">
-            <a class="p-auto"> Catergory <p>{{pitch.category.category}}</p></a>
+            <p> Catergory <a href="/category/{{pitch.category_id}}"><i><u>{{pitch.category.category}}</u></i> </a>
+            </p>
         </div>
         <div class="card-text text-md-left mr-3 pr-3">
             <p class="mr-2">{{ pitch.pitch }}</p>
