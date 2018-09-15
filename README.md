@@ -38,16 +38,16 @@ Run the following commands in the same terminal:
 
 ### Install dependancies
 Install dependancies that will create an environment for the app to run
- *pip install python3.6
- *pip install flask
- *pip install flask-SQLAlchemy
- *pip install Flask-Bootstrap4==4.0.2
- *pip install flask-script
- *pip install flask-wtf
- *pip install flask-migrate
- *pip install flask-login
- *pip install Flask-Mail
- *pip install flask-uploads
+ * pip install python3.6
+ * pip install flask
+ * pip install flask-SQLAlchemy
+ * pip install Flask-Bootstrap4==4.0.2
+ * pip install flask-script
+ * pip install flask-wtf
+ * pip install flask-migrate
+ * pip install flask-login
+ * pip install Flask-Mail
+ * pip install flask-uploads
 
 ### Prepare environment variables
 ```bash
