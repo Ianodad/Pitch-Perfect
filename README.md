@@ -83,3 +83,4 @@ SQLAlchemy errors, automatic sign out has a short time span
 Contact me on developer.ianodad@gmail.com for any comments, reviews or advice.
 
 ### License
+This project is licensed under the MIT Open Source license, (c) Ian Odhimabo
